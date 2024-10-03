@@ -1,10 +1,14 @@
-import './App.css'
+import styles from './App.module.css'
+import Form from './Form/Form'
 
 function App() {
 
   return (
     <>
-    <h1 className='tittle'>Buscador de clima</h1>
+    <h1 className={styles.title}>Buscador de clima</h1>
+    <div className={styles.container}>
+    <Form />
+    </div>
     </>
   )
 }
