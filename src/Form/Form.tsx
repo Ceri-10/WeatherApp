@@ -4,8 +4,12 @@ import styles from "./Form.module.css"
 import { SearchType } from "../types";
 import Alert from "../Alert/Alert";
 
+type FormProps = {
+    fetchWeather: (search: SearchType) => Promise<void>
+}
 
-export default function Form() {
+
+export default function Form({fetchWeather}: FormProps) {
 
     const [search, setSearch] = useState<SearchType>({ city: "", country: "" })
     const [alert,setAlert] = useState("")
@@ -22,6 +26,8 @@ export default function Form() {
                 setAlert("Todos los campos son obligatorios")
                 return
             }
+            
+            fetchWeather(search)
     }
 
     return (
@@ -58,7 +64,7 @@ export default function Form() {
                     ))}
                 </select>
             </div>
-            <input className={styles.submit} type="sybmit" value="Consultar Clima" />
+            <input className={styles.submit} type="submit" value="Consultar Clima" />
         </form>
     )
 }
